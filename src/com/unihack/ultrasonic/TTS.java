@@ -1,4 +1,4 @@
-package ioio.examples.ultrasonic;
+package com.unihack.ultrasonic;
 
 import java.util.Locale;
 
@@ -17,7 +17,7 @@ public class TTS implements OnInitListener{
 	public TTS() {
 		if(instance != null) return;
 		//TODO should be send activity
-		tts = new TextToSpeech(null, this);
+		tts = new TextToSpeech(VisionPlusActivity.getInstance(), this);
 		instance = this;
 	}
 

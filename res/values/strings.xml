@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, IOIOUltrasonicSensorActivity!</string>
-    <string name="app_name">IOIOUltrasonicSensor</string>
+    <string name="app_name">VisionPlus</string>
+
+    <string-array name="language_array">
+        <item>Choose language</item>
+        <item>Canada</item>
+        <item>China</item>
+        <item>English</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Italian</item>
+        <item>Japan</item>
+        <item>Korea</item>
+        <item>Taiwan</item>
+    </string-array>
 
 </resources>

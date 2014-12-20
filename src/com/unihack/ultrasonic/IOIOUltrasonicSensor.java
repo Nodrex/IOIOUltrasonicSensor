@@ -1,4 +1,4 @@
-package ioio.examples.ultrasonic;
+package com.unihack.ultrasonic;
 
 import ioio.lib.api.DigitalOutput;
 import ioio.lib.api.PulseInput;
@@ -6,7 +6,7 @@ import ioio.lib.api.PulseInput.PulseMode;
 import ioio.lib.api.exception.ConnectionLostException;
 import android.util.Log;
 
-public class IOIOUltrasonicSensorActivity extends AbstractIOIOService {
+public class IOIOUltrasonicSensor extends AbstractIOIOService {
 	
 	private int echoSeconds;
 	private int echoDistanceCm;
@@ -46,6 +46,7 @@ public class IOIOUltrasonicSensorActivity extends AbstractIOIOService {
 
 		public void loop() throws ConnectionLostException {
 			try {
+				
 				//Log.d("VisionPlus ", "loop");
 				// read HC-SR04 ultrasonic sensor
 				triggerPin_.write(false);
@@ -71,6 +72,9 @@ public class IOIOUltrasonicSensorActivity extends AbstractIOIOService {
 				throw e;
 
 			}
+			
+			VisionPlusActivity.finishActivity();
+			
 		}
 	}
 
