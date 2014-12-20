@@ -13,7 +13,7 @@ public class TTS implements OnInitListener{
 	
 	private static TextToSpeech tts;
 	private TTS instance;
-	
+	 
 	public TTS() {
 		if(instance != null) return;
 		//TODO should be send activity
