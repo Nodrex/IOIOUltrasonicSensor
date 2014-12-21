@@ -61,13 +61,13 @@ public class IOIOUltrasonicSensor extends AbstractIOIOService {
 				Log.d("VisionPlus", echoDistanceCm + "");
 				
 				counter++;
-				if(echoDistanceCm <=1000){
+				/*if(echoDistanceCm <=1000){
 					new TTS().speak("Stop");
-				} /*else if(bla >=200){
+				} else*/ if(counter >=200){
 						Log.d("VisionPlus", "speak");
 						new TTS().speak(""+echoDistanceCm);
-						bla = 0;
-				}*/
+						counter = 0;
+				}
 				
 				sleep(20);
 			} catch (InterruptedException e) {
