@@ -5,15 +5,13 @@
 
     <string-array name="language_array">
         <item>Choose language</item>
-        <item>Canada</item>
-        <item>China</item>
         <item>English</item>
         <item>French</item>
         <item>German</item>
         <item>Italian</item>
-        <item>Japan</item>
-        <item>Korea</item>
-        <item>Taiwan</item>
+        <item>Japanese</item>
+        <item>Korean</item>
+        <item>Chinese</item>
     </string-array>
 
 </resources>

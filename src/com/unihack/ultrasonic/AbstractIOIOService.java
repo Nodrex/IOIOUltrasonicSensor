@@ -18,6 +18,12 @@ import android.os.IBinder;
 import android.util.Log;
 
 public abstract class AbstractIOIOService extends Service{
+	
+	private static AbstractIOIOService instance; 
+
+	public static AbstractIOIOService getInstance() {
+		return instance;
+	}
 
 	private static final String TAG = "AbstractIOIOActivity";
 	
@@ -40,6 +46,7 @@ public abstract class AbstractIOIOService extends Service{
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		instance = this;
 		for (IOIOConnectionBootstrap bootstrap : bootstraps_) {
 			if (bootstrap instanceof ContextWrapperDependent) {
 				((ContextWrapperDependent) bootstrap).onCreate(this);

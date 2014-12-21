@@ -10,6 +10,8 @@ public class IOIOUltrasonicSensor extends AbstractIOIOService {
 	
 	private int echoSeconds;
 	private int echoDistanceCm;
+	
+	private int bla = 0;
 
 	/**
 	 * Primary thread...runs until interrupted
@@ -47,7 +49,6 @@ public class IOIOUltrasonicSensor extends AbstractIOIOService {
 		public void loop() throws ConnectionLostException {
 			try {
 				
-				//Log.d("VisionPlus ", "loop");
 				// read HC-SR04 ultrasonic sensor
 				triggerPin_.write(false);
 				sleep(5);
@@ -57,20 +58,23 @@ public class IOIOUltrasonicSensor extends AbstractIOIOService {
 				echoSeconds = (int) (echoPin_.getDuration() * 1000 * 1000);
 				echoDistanceCm = echoSeconds / 29 / 2;
 				
-				sleep(200);
 				Log.d("VisionPlus", echoDistanceCm + "");
-				//new TTS().speak(""+echoDistanceCm);
 				
-				/* update UI */
-				//updateViews();
-
+				bla++;
+				if(echoDistanceCm <=1000){
+					new TTS().speak("Stop");
+				} /*else if(bla >=200){
+						Log.d("VisionPlus", "speak");
+						new TTS().speak(""+echoDistanceCm);
+						bla = 0;
+				}*/
+				
 				sleep(20);
 			} catch (InterruptedException e) {
 				ioio_.disconnect();
 
 			} catch (ConnectionLostException e) {
 				throw e;
-
 			}
 			
 			VisionPlusActivity.finishActivity();

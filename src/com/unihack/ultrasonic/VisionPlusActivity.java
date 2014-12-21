@@ -5,7 +5,10 @@ import ioio.examples.ultrasonic.R;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,14 +19,14 @@ import android.widget.AdapterView.OnItemSelectedListener;
 public class VisionPlusActivity extends Activity implements OnItemSelectedListener {
 
 	private static VisionPlusActivity instance;
-	private static Locale locale;
+	private static Locale locale = Locale.ENGLISH;
+
+	public static void setLocale(Locale locale) {
+		VisionPlusActivity.locale = locale;
+	}
 
 	public static Locale getLocale() {
 		return locale;
-	}
-
-	public static VisionPlusActivity getInstance() {
-		return instance;
 	}
 
 	@Override
@@ -44,16 +47,42 @@ public class VisionPlusActivity extends Activity implements OnItemSelectedListen
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
+		SharedPreferences sharedPref = getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE);
+		Editor editor = sharedPref.edit();
 		String item = (String) parent.getItemAtPosition(pos);
-		/*
-		 * switch (item) { case "Canada": locale = Locale.CANADA; break; case
-		 * "China": locale = Locale.CHINA; break; case "English": locale =
-		 * Locale.ENGLISH; break; case "French": locale = Locale.FRENCH; break;
-		 * case "German": locale = Locale.GERMAN; break; case "Italian": locale
-		 * = Locale.ITALIAN; break; case "Japan": locale = Locale.JAPAN; break;
-		 * case "Korea": locale = Locale.KOREA; break; case "Taiwan": locale =
-		 * Locale.TAIWAN; break; default: return; }
-		 */
+		switch (item) {
+		case "English":
+			locale = Locale.ENGLISH;
+			editor.putString(Constants.LANGUAGE, "en");
+			break;
+		case "French":
+			locale = Locale.FRENCH;
+			editor.putString(Constants.LANGUAGE, "fr");
+			break;
+		case "German":
+			locale = Locale.GERMAN;
+			editor.putString(Constants.LANGUAGE, "de");
+			break;
+		case "Italian":
+			locale = Locale.ITALIAN;
+			editor.putString(Constants.LANGUAGE, "it");
+			break;
+		case "Japanese":
+			locale = Locale.JAPANESE;
+			editor.putString(Constants.LANGUAGE, "ja");
+			break;
+		case "Korean":
+			locale = Locale.KOREAN;
+			editor.putString(Constants.LANGUAGE, "ko");
+			break;
+		case "Chinese":
+			locale = Locale.CHINESE;
+			editor.putString(Constants.LANGUAGE, "zh");
+			break;
+		default:
+			return;
+		}
+		editor.commit();
 		findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
 		startService(new Intent(this, IOIOUltrasonicSensor.class));
 	}
