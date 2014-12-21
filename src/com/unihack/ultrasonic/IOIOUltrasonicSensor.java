@@ -11,7 +11,7 @@ public class IOIOUltrasonicSensor extends AbstractIOIOService {
 	private int echoSeconds;
 	private int echoDistanceCm;
 	
-	private int bla = 0;
+	private int counter = 0;
 
 	/**
 	 * Primary thread...runs until interrupted
@@ -60,7 +60,7 @@ public class IOIOUltrasonicSensor extends AbstractIOIOService {
 				
 				Log.d("VisionPlus", echoDistanceCm + "");
 				
-				bla++;
+				counter++;
 				if(echoDistanceCm <=1000){
 					new TTS().speak("Stop");
 				} /*else if(bla >=200){
