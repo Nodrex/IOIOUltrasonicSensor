@@ -24,6 +24,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+/**
+ * This class is used to start service when device is started.
+ */
 public class BootStarter extends BroadcastReceiver {
 
 	@Override

@@ -24,6 +24,10 @@ import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.util.Log;
 
+/**
+ * Text to speech. </br> Converts string text to sound </br> supports multiple
+ * languages, more concretely all languages which supports java.util.Locale.
+ */
 public class TTS implements OnInitListener{
 	
 	private static TextToSpeech tts;

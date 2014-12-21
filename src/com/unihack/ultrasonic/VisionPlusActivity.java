@@ -45,6 +45,15 @@ public class VisionPlusActivity extends Activity implements OnItemSelectedListen
 	public static Locale getLocale() {
 		return locale;
 	}
+	
+	/**
+	 * Finish Activity.</br> We do not need design , because this application is
+	 * oriented on service </br> so this method is used to finish Activity.
+	 */
+	public static void finishActivity() {
+		if (instance == null) ;
+		instance.finish();
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -107,12 +116,4 @@ public class VisionPlusActivity extends Activity implements OnItemSelectedListen
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {}
 
-	/**
-	 * Finish Activity.</br> We do not need design , because this application is
-	 * oriented on service </br> so this method is used to finish Activity.
-	 */
-	public static void finishActivity() {
-		if (instance == null) ;
-		instance.finish();
-	}
 }
